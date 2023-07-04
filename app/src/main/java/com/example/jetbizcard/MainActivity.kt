@@ -21,6 +21,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.surfaceColorAtElevation
@@ -60,7 +61,7 @@ fun CreateBizCard() {
     ) {
         Card(
             modifier = Modifier
-                .width(200.dp)
+                .fillMaxWidth()
                 .height(390.dp)
                 .padding(12.dp),
             shape = RoundedCornerShape(corner = CornerSize(15.dp)),
@@ -68,30 +69,40 @@ fun CreateBizCard() {
             elevation = CardDefaults.cardElevation(defaultElevation = 500.dp)
         ) {
             Column(
-                modifier = Modifier.height(300.dp),
+                modifier = Modifier
+                    .height(500.dp)
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Surface(
-                    modifier = Modifier
-                        .size(150.dp)
-                        .padding(5.dp),
-                    shape = CircleShape,
-                    border = BorderStroke(0.5.dp, Color.LightGray),
-                    shadowElevation = 4.dp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-                ) {
-                    Image(
-                        painter = painterResource(
-                            id = R.drawable.profile_image
-                        ),
-                        contentDescription = "profile image",
-                        modifier = Modifier.size(135.dp),
-                        contentScale = ContentScale.Crop
-                    )
-                }
+                CreateImageProfile()
+                Divider(thickness = 2.dp)
             }
         }
+    }
+}
+
+@Composable
+private fun CreateImageProfile(
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = Modifier
+            .size(150.dp)
+            .padding(5.dp),
+        shape = CircleShape,
+        border = BorderStroke(0.5.dp, Color.LightGray),
+        shadowElevation = 4.dp,
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+    ) {
+        Image(
+            painter = painterResource(
+                id = R.drawable.profile_image
+            ),
+            contentDescription = "profile image",
+            modifier = Modifier.size(135.dp),
+            contentScale = ContentScale.Crop
+        )
     }
 }
 
