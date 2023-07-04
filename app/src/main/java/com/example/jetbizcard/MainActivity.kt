@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -24,6 +25,7 @@ import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,7 +35,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetbizcard.ui.theme.JetBizCardTheme
+import java.time.format.TextStyle
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,15 +79,16 @@ fun CreateBizCard() {
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CreateImageProfile()
+                ImageProfile()
                 Divider(thickness = 2.dp)
+                InfoSection()
             }
         }
     }
 }
 
 @Composable
-private fun CreateImageProfile(
+private fun ImageProfile(
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -106,6 +111,30 @@ private fun CreateImageProfile(
     }
 }
 
+@Composable
+private fun InfoSection(
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = Modifier.padding(5.dp)
+    ) {
+        Text(
+            text = "Jossany Moura",
+            style = MaterialTheme.typography.headlineMedium,
+            color = Color.Blue,
+            fontSize = 40.sp
+        )
+        Text(
+            text = "Android Composer Programmer",
+            modifier = Modifier.padding(3.dp)
+        )
+        Text(
+            text = "@Jossany.Moura",
+            modifier = Modifier.padding(3.dp)
+        )
+    }
+
+}
 
 @Preview(showBackground = true)
 @Composable
